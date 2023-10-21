@@ -10,7 +10,11 @@
     <div class="col-md-4">
         <form action="/signupdata" method="post">
             <div class="form-group">
-                <input type="text" class='form-control mt-2' placeholder="Enter Name" name="name" required>
+                <input type="text" class='form-control mt-2' placeholder="Enter First Name" name="fname" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class='form-control mt-2' placeholder="Enter Last Name" name="lname" required>
             </div>
 
             <div class="form-group">
@@ -18,16 +22,25 @@
             </div>
 
             <div class="form-group">
+                <input type="tel" class='form-control mt-2' placeholder="Enter Phone" name="phone" required>
+            </div>
+
+            <!-- <div class="form-group">
                 <input type="date" class='form-control mt-2' placeholder="Enter DOB" name="dob" required>
+            </div> -->
+
+            <div class="form-group">
+                <input type="text" class='form-control mt-2' placeholder="Enter Address" name="address" required>
             </div>
 
             <div class="form-group">
-                <input type="tel" class='form-control mt-2' placeholder="Enter Phone" name="phone" required>
+                <input type="text" class='form-control mt-2' placeholder="Enter User Name" name="uname" required>
             </div>
 
             <div class="form-group">
                 <input type="password" class='form-control mt-2' placeholder="Set passsword" name="password" required>
             </div>
+            
             <br>
             <button type="submit" class="btn btn-info">Signup</button>
         </form>
