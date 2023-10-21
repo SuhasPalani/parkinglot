@@ -60,7 +60,7 @@ def userlogin():
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     if request.method == 'POST':
-        id=request.POST.get('id')
+        id=request.form.get('id')
         fname=request.form.get('fname')
         lname=request.form.get('lname')
         email=request.form.get('email')
@@ -70,16 +70,10 @@ def signup():
         password=request.form.get('password')
         # print(fname,lname,email,phone,Address,uname,password)
         encpassword = generate_password_hash(password)
-        # emailUser = user_accessed.query.filter_by(email=email).first()
-        # if emailUser:
-        #     flash('Account for given email already exits, Please Login ', 'warning')
-        #     return render_template('login.html')
-        # else:
-        new_user = db.engine.execute (f"INSERT INTO `customer` (`cust_id `, `first_name`,`last_name`,`email`, `phone_number`, `address`, `user_name`,`password`) VALUES ('{id}', '{fname}','{lname}','{email}', '{phone}', '{address}', '{uname}','{encpassword}' )")
-        #user = User.query.filter_by(email=email).first()
-        # flash('User account created', 'success')
-        # return render_template('index.html')
-        return 'úser added'
+        with db.engine.connect() as conn:
+            new_user = conn.execute(f"INSERT INTO `customer` (`cust_id `, `first_name`,`last_name`,`email`, `phone_number`, `address`, `user_name`,`password`) VALUES ('{id}', '{fname}','{lname}','{email}', '{phone}', '{address}', '{uname}','{encpassword}' )")
+        
+            return 'úser added'
     return render_template("usersignup.html")
 
 
